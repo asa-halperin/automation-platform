@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 set -e
+set -a
+source .env
+set +a
 
 echo "Starting containers..."
 docker compose up -d
@@ -9,7 +12,7 @@ until curl -sf http://localhost:3001/api/healthz > /dev/null; do sleep 2; done
 
 echo "Creating Gitea admin user..."
 docker compose exec -u git gitea gitea admin user create --admin \
-  --username testadmin --password 'TestAdmin123!' \
+  --username "$GITEA_ADMIN_USER" --password "$GITEA_ADMIN_PASSWORD" \
   --email testadmin@example.com --must-change-password=false \
   || echo "Admin user already exists"
 
