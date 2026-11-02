@@ -1,11 +1,4 @@
 {
-  "compilerOptions": {
-    "target": "esnext",
-    "module": "preserve",
-    "strict": true,
-    "types": ["node"],
-    "noEmit": true,
-    "skipLibCheck": true
-  },
+  "extends": "../../tsconfig.base.json",
   "include": ["src"]
 }
