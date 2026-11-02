@@ -5,7 +5,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "pnpm -r --workspace-concurrency=1 test",
+    "test": "pnpm -r --no-bail --workspace-concurrency=1 test",
     "env:up": "bash scripts/setup-env.sh",
     "env:down": "docker compose down"
   },
