@@ -1,7 +1,7 @@
-import { test, expect } from '@playwright/test';
+import { test, expect } from '../fixtures';
 
-test('version endpoint returns Gitea 1.24', async ({ request }) => {
-    const response = await request.get('/api/v1/version');
+test('version endpoint returns Gitea 1.24', async ({ api }) => {
+    const response = await api.getVersion();
     await expect(response).toBeOK();
 
     const body: { version: string } = await response.json();

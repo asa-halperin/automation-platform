@@ -31,4 +31,7 @@ export class GiteaApi {
   async deleteRepo(owner: string, name: string): Promise<APIResponse> {
     return this.request.delete(`/api/v1/repos/${owner}/${name}`, { headers: this.headers() });
   }
+    async getVersion(): Promise<APIResponse> {
+    return this.request.get('/api/v1/version');
+  }
 }
