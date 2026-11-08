@@ -16,4 +16,7 @@ jobs:
           node-version: 26
           cache: pnpm
       - run: pnpm install --frozen-lockfile
-      - run: node -v && pnpm -v
+      - run: pnpm --filter @platform/juice-shop exec playwright install --with-deps chromium
+      - run: cp .env.example .env
+      - run: pnpm env:up
+      - run: pnpm test
