@@ -28,6 +28,8 @@ export function createConfig(baseURL: string, options: ConfigOptions = {}) {
   return defineConfig({
     testDir: './tests',
     fullyParallel: true,
+    retries: process.env.CI ? 2 : 0,
+    forbidOnly: !!process.env.CI,
     reporter: [['html', { open: 'never' }]],
     use: {
       baseURL,
