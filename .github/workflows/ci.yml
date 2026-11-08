@@ -8,6 +8,11 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        product: [gitea, juice-shop]
+    name: test (${{ matrix.product }})
     steps:
       - uses: actions/checkout@v5
       - uses: pnpm/action-setup@v4
@@ -16,13 +21,13 @@ jobs:
           node-version: 26
           cache: pnpm
       - run: pnpm install --frozen-lockfile
-      - run: pnpm --filter @platform/juice-shop exec playwright install --with-deps chromium
+      - run: pnpm --filter @platform/${{ matrix.product }} exec playwright install --with-deps chromium
       - run: cp .env.example .env
       - run: pnpm env:up
-      - run: pnpm test
+      - run: pnpm --filter @platform/${{ matrix.product }} test
       - uses: actions/upload-artifact@v5
         if: ${{ !cancelled() }}
         with:
-          name: playwright-reports
-          path: products/*/playwright-report/
+          name: playwright-report-${{ matrix.product }}
+          path: products/${{ matrix.product }}/playwright-report/
           retention-days: 14
