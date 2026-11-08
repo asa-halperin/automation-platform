@@ -5,7 +5,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "playwright test"
+    "test": "rm -rf allure-results && playwright test"
   },
   "keywords": [],
   "author": "",

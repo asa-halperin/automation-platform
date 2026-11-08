@@ -30,7 +30,10 @@ export function createConfig(baseURL: string, options: ConfigOptions = {}) {
     fullyParallel: true,
     retries: process.env.CI ? 2 : 0,
     forbidOnly: !!process.env.CI,
-    reporter: [['html', { open: 'never' }]],
+    reporter: [
+      ['html', { open: 'never' }],
+      ['allure-playwright', { resultsDir: 'allure-results' }],
+    ],
     use: {
       baseURL,
       trace: 'on-first-retry',
