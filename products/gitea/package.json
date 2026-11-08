@@ -5,15 +5,18 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "playwright test"
+    "test": "rm -rf allure-results && playwright test"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "module",
   "devDependencies": {
+    "@platform/test-core": "workspace:*",
     "@playwright/test": "^1.64.1",
-    "@types/node": "^26.6.6",
-    "@platform/test-core": "workspace:*"
+    "@types/node": "^26.6.6"
+  },
+  "dependencies": {
+    "allure-js-commons": "^3.14.0"
   }
 }

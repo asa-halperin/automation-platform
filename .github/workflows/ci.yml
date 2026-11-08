@@ -28,6 +28,29 @@ jobs:
       - uses: actions/upload-artifact@v5
         if: ${{ !cancelled() }}
         with:
-          name: playwright-report-${{ matrix.product }}
-          path: products/${{ matrix.product }}/playwright-report/
+          name: allure-results-${{ matrix.product }}
+          path: products/${{ matrix.product }}/allure-results/
+          retention-days: 14
+  report:
+    needs: test
+    if: ${{ !cancelled() }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 26
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - uses: actions/download-artifact@v5
+        with:
+          pattern: allure-results-*
+          merge-multiple: true
+          path: allure-results
+      - run: pnpm exec allure generate allure-results
+      - uses: actions/upload-artifact@v5
+        with:
+          name: allure-report
+          path: allure-report/
           retention-days: 14
