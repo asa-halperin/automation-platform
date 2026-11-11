@@ -5,3 +5,4 @@ playwright-report
 .auth
 allure-results
 allure-report
+docker-results
