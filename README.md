@@ -1,4 +1,5 @@
 # Automation Platform
+[![CI](https://github.com/asa-halperin/automation-platform/actions/workflows/ci.yml/badge.svg)](https://github.com/asa-halperin/automation-platform/actions/workflows/ci.yml)
 
 Cross-product test automation infrastructure built with **TypeScript** and **Playwright**.
 One shared library, many products, one CI pipeline and one combined report.
@@ -26,6 +27,13 @@ flowchart LR
 - **API Objects and self-cleaning fixtures:** test data is created through the API, verified through the UI, and always cleaned up, even when a test fails.
 - **Reliable environment:** `pnpm env:up` starts the products in Docker and waits for health checks before tests run.
 - **CI on every pull request:** a parallel job per product, retries with traces on failure, and a combined Allure report.
+
+## Live report
+
+The combined Allure report from the latest run on `main`:
+**[asa-halperin.github.io/automation-platform](https://asa-halperin.github.io/automation-platform/)**
+
+![Allure report](docs/images/allure-report.png)
 
 ## How to run
 
