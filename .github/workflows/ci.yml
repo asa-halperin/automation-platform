@@ -7,7 +7,13 @@ on:
 
 jobs:
   test:
+    needs: image
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: read
+    env:
+      IMAGE: ghcr.io/asa-halperin/automation-platform-tests:${{ github.sha }}
     strategy:
       fail-fast: false
       matrix:
@@ -18,13 +24,16 @@ jobs:
       - run: cp .env.example .env
       - run: bash scripts/setup-env.sh
 
-      - name: Build test image
-        run: docker build -t automation-platform-tests .
+      - name: Log in to GitHub Container Registry
+        run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+
+      - name: Pull test image
+        run: docker pull $IMAGE
 
       - name: Run tests in container
         run: >
           docker run --name tests --network host --env-file .env
-          automation-platform-tests
+          $IMAGE
           pnpm --filter @platform/${{ matrix.product }} test
 
       - name: Copy reports out of container
