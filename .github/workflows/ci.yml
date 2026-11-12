@@ -47,6 +47,11 @@ jobs:
           retention-days: 14
   image:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    env:
+      IMAGE: ghcr.io/asa-halperin/automation-platform-tests:${{ github.sha }}
     steps:
       - uses: actions/checkout@v5
 
@@ -80,6 +85,14 @@ jobs:
           aquasec/trivy:0.76.2 image
           --scanners vuln --severity HIGH
           --exit-code 0 automation-platform-tests
+
+      - name: Log in to GitHub Container Registry
+        run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+
+      - name: Push image
+        run: |
+          docker tag automation-platform-tests $IMAGE
+          docker push $IMAGE
 
   report:
     needs: test
