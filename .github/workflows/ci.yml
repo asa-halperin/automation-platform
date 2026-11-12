@@ -60,6 +60,7 @@ jobs:
         # in the same RUN that creates it.
         run: >
           docker run --rm -v /var/run/docker.sock:/var/run/docker.sock
+          -v ${{ runner.temp }}/trivy-cache:/root/.cache/trivy
           aquasec/trivy:0.76.2 image
           --scanners secret --skip-dirs /root/.npm
           --exit-code 1 automation-platform-tests
@@ -67,6 +68,7 @@ jobs:
       - name: Fail on fixable critical vulnerabilities
         run: >
           docker run --rm -v /var/run/docker.sock:/var/run/docker.sock
+          -v ${{ runner.temp }}/trivy-cache:/root/.cache/trivy
           aquasec/trivy:0.76.2 image
           --scanners vuln --severity CRITICAL --ignore-unfixed
           --exit-code 1 automation-platform-tests
@@ -74,6 +76,7 @@ jobs:
       - name: Report high vulnerabilities
         run: >
           docker run --rm -v /var/run/docker.sock:/var/run/docker.sock
+          -v ${{ runner.temp }}/trivy-cache:/root/.cache/trivy
           aquasec/trivy:0.76.2 image
           --scanners vuln --severity HIGH
           --exit-code 0 automation-platform-tests
