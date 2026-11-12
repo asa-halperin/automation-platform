@@ -15,16 +15,24 @@ jobs:
     name: test (${{ matrix.product }})
     steps:
       - uses: actions/checkout@v5
-      - uses: pnpm/action-setup@v4
-      - uses: actions/setup-node@v6
-        with:
-          node-version: 26
-          cache: pnpm
-      - run: pnpm install --frozen-lockfile
-      - run: pnpm --filter @platform/${{ matrix.product }} exec playwright install --with-deps chromium
       - run: cp .env.example .env
-      - run: pnpm env:up
-      - run: pnpm --filter @platform/${{ matrix.product }} test
+      - run: bash scripts/setup-env.sh
+
+      - name: Build test image
+        run: docker build -t automation-platform-tests .
+
+      - name: Run tests in container
+        run: >
+          docker run --name tests --network host --env-file .env
+          automation-platform-tests
+          pnpm --filter @platform/${{ matrix.product }} test
+
+      - name: Copy reports out of container
+        if: ${{ !cancelled() }}
+        run: |
+          docker cp tests:/app/products/${{ matrix.product }}/playwright-report products/${{ matrix.product }}/
+          docker cp tests:/app/products/${{ matrix.product }}/allure-results products/${{ matrix.product }}/
+
       - uses: actions/upload-artifact@v5
         if: ${{ !cancelled() }}
         with:
