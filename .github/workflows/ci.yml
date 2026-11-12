@@ -37,6 +37,38 @@ jobs:
           name: allure-results-${{ matrix.product }}
           path: products/${{ matrix.product }}/allure-results/
           retention-days: 14
+  image:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Build test image
+        run: docker build -t automation-platform-tests .
+
+      - name: Scan image for secrets
+        # Base image (Playwright) ships an npm cache with an expired
+        # Azure SAS download token from Microsoft's own build. Not ours,
+        # cannot be removed from that layer. Our own npm cache is deleted
+        # in the same RUN that creates it.
+        run: >
+          docker run --rm -v /var/run/docker.sock:/var/run/docker.sock
+          aquasec/trivy:0.76.2 image
+          --scanners secret --skip-dirs /root/.npm
+          --exit-code 1 automation-platform-tests
+
+      - name: Fail on fixable critical vulnerabilities
+        run: >
+          docker run --rm -v /var/run/docker.sock:/var/run/docker.sock
+          aquasec/trivy:0.76.2 image
+          --scanners vuln --severity CRITICAL --ignore-unfixed
+          --exit-code 1 automation-platform-tests
+
+      - name: Report high vulnerabilities
+        run: >
+          docker run --rm -v /var/run/docker.sock:/var/run/docker.sock
+          aquasec/trivy:0.76.2 image
+          --scanners vuln --severity HIGH
+          --exit-code 0 automation-platform-tests
 
   report:
     needs: test
