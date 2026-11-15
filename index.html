@@ -1,0 +1,868 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>Asa Halperin | QA & Automation Leader</title>
+<meta name="description" content="Asa Halperin: QA and automation team lead with 17 years in software quality. Automation infrastructure, CI pipelines, containerized test runs and AI-assisted QA.">
+<meta property="og:title" content="Asa Halperin | QA & Automation Leader">
+<meta property="og:description" content="17 years in software quality, 8+ years leading QA and automation teams. Automation infrastructure, CI/CD and AI in QA, with live engineering demos.">
+<meta name="theme-color" content="#EEF6EF">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #EEF6EF;
+  --paper: #FFFFFF;
+  --ink: #0A1A12;
+  --ink-2: #33483D;
+  --muted: #5C7166;
+  --line: #CFE0D4;
+  --green: #0E9F5B;
+  --green-deep: #0B6B43;
+  --teal: #2BA8A0;
+  --lime: #C9F46B;
+  --mint: #DDF3E3;
+  --night: #07140E;
+  --night-2: #0F2319;
+  --fail: #D4483F;
+  --display: "Bricolage Grotesque", "Figtree", system-ui, sans-serif;
+  --body: "Figtree", system-ui, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, monospace;
+  --r-lg: 28px; --r-md: 18px; --r-sm: 10px;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0; color: var(--ink); font: 400 17px/1.6 var(--body);
+  background-color: var(--bg);
+  background-image:
+    radial-gradient(900px 520px at 88% -8%, rgba(201,244,107,.55), transparent 62%),
+    radial-gradient(760px 520px at -6% 18%, rgba(43,168,160,.20), transparent 60%),
+    radial-gradient(rgba(10,26,18,.085) 1px, transparent 1.4px);
+  background-size: auto, auto, 22px 22px;
+  background-attachment: scroll, scroll, scroll;
+  overflow-x: hidden;
+}
+a { color: var(--green-deep); text-underline-offset: 3px; }
+:focus-visible { outline: 3px solid var(--green); outline-offset: 3px; border-radius: 6px; }
+.wrap { max-width: 1120px; margin: 0 auto; padding-left: 20px; padding-right: 20px; }
+h1, h2, h3 { font-family: var(--display); letter-spacing: -0.025em; margin: 0; }
+h2 { font-size: clamp(32px, 4.6vw, 52px); line-height: 1.02; font-weight: 800; }
+.lede { color: var(--ink-2); font-size: 19px; max-width: 58ch; margin: 14px 0 0; }
+.block { padding-top: 96px; }
+
+/* Nav */
+.nav { position: sticky; top: 12px; z-index: 20; margin-top: 12px; }
+.nav-inner {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  background: rgba(255,255,255,.78); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--line); border-radius: 999px; padding: 8px 8px 8px 20px;
+  box-shadow: 0 10px 30px -18px rgba(10,26,18,.35);
+}
+.brand { font-family: var(--display); font-weight: 800; font-size: 18px; color: var(--ink); text-decoration: none; display: flex; align-items: center; gap: 10px; }
+.brand i { width: 12px; height: 12px; border-radius: 50%; background: var(--green); box-shadow: 0 0 0 4px rgba(14,159,91,.2); }
+.nav-links { display: flex; gap: 4px; align-items: center; }
+.nav-links a { color: var(--ink-2); text-decoration: none; font-weight: 600; font-size: 15px; padding: 8px 14px; border-radius: 999px; }
+.nav-links a:hover { background: var(--mint); color: var(--ink); }
+.nav-links a.cv { background: var(--ink); color: #fff; }
+.nav-links a.cv:hover { background: var(--green-deep); }
+
+/* Buttons */
+.btn {
+  display: inline-flex; align-items: center; gap: 10px; text-decoration: none; font-weight: 700; font-size: 16px;
+  padding: 14px 22px; border-radius: 999px; border: 1.5px solid var(--ink); color: var(--ink); background: transparent;
+  transition: transform .15s ease, background .15s ease, box-shadow .15s ease;
+}
+.btn svg { width: 18px; height: 18px; flex: none; }
+.btn:hover { transform: translateY(-2px); background: #fff; box-shadow: 0 10px 0 -6px var(--ink); }
+.btn.solid { background: var(--ink); color: #fff; }
+.btn.solid:hover { background: var(--green-deep); border-color: var(--green-deep); box-shadow: 0 10px 0 -6px var(--lime); }
+.btn.lime { background: var(--lime); border-color: var(--lime); color: var(--ink); }
+.btn.lime:hover { background: #fff; border-color: #fff; box-shadow: 0 10px 0 -6px var(--green); }
+
+/* Hero */
+.hero { display: grid; grid-template-columns: 1.02fr .98fr; gap: 48px; align-items: center; padding-top: 72px; }
+.avail { display: inline-flex; align-items: center; gap: 10px; background: #fff; border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px 6px 10px; font-weight: 600; font-size: 14px; color: var(--ink-2); }
+.avail b { width: 9px; height: 9px; border-radius: 50%; background: var(--green); animation: pulse 2.2s infinite; }
+@keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(14,159,91,.5);} 70% { box-shadow: 0 0 0 10px rgba(14,159,91,0);} 100% { box-shadow: 0 0 0 0 rgba(14,159,91,0);} }
+h1 { font-size: clamp(46px, 7.4vw, 92px); line-height: .94; font-weight: 800; margin-top: 22px; }
+h1 span { display: block; }
+.h1-sub { -webkit-text-stroke: 3px var(--ink); paint-order: stroke fill; color: var(--bg); }
+.hero p.lede { font-size: 20px; }
+.hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+
+/* Pipeline terminal */
+.term { background: var(--night); color: #D7EBDD; border-radius: var(--r-lg); padding: 0; box-shadow: 12px -12px 0 0 var(--lime), 0 40px 80px -40px rgba(7,20,14,.75); margin-right: 14px; position: relative; transform: rotate(1.2deg); }
+
+.term-top { display: flex; align-items: center; justify-content: space-between; padding: 14px 18px; border-bottom: 1px solid rgba(255,255,255,.08); font: 500 13px var(--mono); color: #86A593; }
+.dots { display: flex; gap: 6px; }
+.dots i { width: 10px; height: 10px; border-radius: 50%; background: #23382D; }
+.term-body { padding: 18px; font: 400 14px/1.5 var(--mono); }
+.cmd { color: #86A593; margin: 0 0 14px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.cmd b { color: var(--lime); font-weight: 500; }
+.job { display: grid; grid-template-columns: 22px 1fr auto; gap: 10px; align-items: center; padding: 9px 0; }
+.job .ic { width: 18px; height: 18px; border-radius: 50%; border: 2px solid #2B4235; display: grid; place-items: center; font-size: 11px; color: var(--night); }
+.job.run .ic { border-color: var(--lime); border-top-color: transparent; animation: spin .8s linear infinite; }
+.job.done .ic { background: var(--green); border-color: var(--green); }
+.job.done .ic::before { content: "✓"; font-weight: 700; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.job .nm { color: #F1FAF3; }
+.job .nm small { display: block; color: #7E9C8A; font-size: 12px; }
+.job .tm { color: #7E9C8A; font-size: 13px; }
+.bar { grid-column: 2 / 4; height: 5px; border-radius: 3px; background: #14271D; overflow: hidden; }
+.bar i { display: block; height: 100%; width: 0; border-radius: 3px; background: linear-gradient(90deg, var(--green), var(--lime)); }
+.term-foot { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; padding: 14px 18px; border-top: 1px solid rgba(255,255,255,.08); font: 500 13px var(--mono); }
+.term-foot .res { color: #7E9C8A; }
+.term-foot .res.ok { color: var(--lime); }
+.term-foot button, .chipbtn { font: 600 13px var(--body); cursor: pointer; border-radius: 999px; padding: 7px 14px; border: 1px solid #2B4235; background: transparent; color: #D7EBDD; }
+.term-foot button:hover { border-color: var(--lime); color: var(--lime); }
+.foot-actions { display: flex; gap: 14px; align-items: center; }
+.foot-actions a { color: #9FBBAA; font: 600 13px var(--body); }
+.foot-actions a:hover { color: var(--lime); }
+.job.fail .ic { background: var(--fail); border-color: var(--fail); color: #fff; }
+.job.fail .ic::before { content: "×"; font-weight: 700; font-size: 13px; }
+.job.fail .bar i { background: var(--fail); }
+.res.bad { color: #FF9C94; }
+.livedot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--lime); margin-right: 8px; animation: pulse 2.2s infinite; }
+.hist-card { margin-top: 36px; }
+.hist-head { display: flex; flex-wrap: wrap; gap: 8px 24px; justify-content: space-between; align-items: flex-start; }
+.legend.small { font-size: 14px; margin: 4px 0 0; }
+.lg-fail { background: var(--fail); }
+.hist-plot { display: flex; align-items: flex-end; gap: 2px; height: 170px; margin-top: 8px; padding-top: 22px; border-bottom: 1px solid var(--line); }
+.hist-plot a { flex: 1 1 0; min-width: 6px; max-width: 44px; border-radius: 4px 4px 0 0; background: var(--green-deep); position: relative; display: block; transition: filter .15s ease; }
+.hist-plot a.failure { background: var(--fail); }
+.hist-plot a.failure::before { content: "×"; position: absolute; left: 0; right: 0; top: -20px; text-align: center; color: var(--fail); font-weight: 800; font-size: 15px; line-height: 1; }
+.hist-plot a.cancelled { background: #A9BDB1; }
+.hist-plot a:hover, .hist-plot a:focus-visible { filter: brightness(1.25); }
+.hist-empty { align-self: center; margin: 0 auto; color: var(--muted); font-size: 15px; }
+.hist-stats { display: flex; flex-wrap: wrap; gap: 10px 32px; margin-top: 16px; color: var(--muted); font-size: 15px; }
+.hist-stats b { font: 800 26px var(--display); color: var(--ink); margin-right: 8px; letter-spacing: -0.02em; }
+.gate b.ok { color: var(--green-deep); }
+.gate b.bad { color: var(--fail); }
+
+/* Stat strip */
+.stats { display: grid; grid-template-columns: repeat(4, 1fr); margin-top: 72px; background: var(--paper); border: 1px solid var(--line); border-radius: var(--r-lg); overflow: hidden; }
+.stat { padding: 26px 24px; border-left: 1px solid var(--line); }
+.stat:first-child { border-left: 0; }
+.stat b { display: block; font: 800 clamp(34px, 4.4vw, 54px)/1 var(--display); letter-spacing: -0.03em; }
+.stat span { color: var(--muted); font-weight: 500; font-size: 15px; }
+
+/* Bento */
+.bento { display: grid; grid-template-columns: repeat(6, 1fr); gap: 16px; margin-top: 36px; }
+.tile { background: var(--paper); border: 1px solid var(--line); border-radius: var(--r-lg); padding: 28px; position: relative; overflow: hidden; }
+.tile h3 { font-size: 26px; line-height: 1.1; font-weight: 700; margin-top: 18px; }
+.tile p { color: var(--ink-2); margin: 10px 0 0; }
+.tile .glyph { width: 52px; height: 52px; border-radius: 16px; background: var(--mint); display: grid; place-items: center; color: var(--green-deep); }
+.tile .glyph svg { width: 26px; height: 26px; }
+.t-a { grid-column: span 4; background: var(--night); color: #fff; border-color: var(--night); }
+.t-a p { color: #B7D0C0; max-width: 46ch; }
+.t-a .glyph { background: var(--lime); color: var(--night); }
+.t-a svg.deco { position: absolute; right: -30px; bottom: -30px; width: 300px; height: 300px; opacity: .9; }
+.t-b { grid-column: span 2; background: var(--lime); border-color: var(--lime); }
+.t-b .glyph { background: var(--night); color: var(--lime); }
+.t-b p { color: #24361A; }
+.t-c, .t-d { grid-column: span 3; }
+
+/* Platform */
+.flow { display: grid; grid-template-columns: repeat(6, 1fr); gap: 10px; margin-top: 36px; position: relative; }
+.flow button {
+  font: inherit; text-align: left; cursor: pointer; background: var(--paper); border: 1.5px solid var(--line); border-radius: var(--r-md);
+  padding: 16px 14px; position: relative; transition: transform .15s ease, border-color .15s ease, background .15s ease;
+}
+.flow button:hover { transform: translateY(-3px); border-color: var(--green); }
+.flow button[aria-selected="true"] { background: var(--night); color: #fff; border-color: var(--night); }
+.flow button .n { display: grid; place-items: center; width: 28px; height: 28px; border-radius: 50%; background: var(--mint); color: var(--green-deep); font: 700 14px var(--display); }
+.flow button[aria-selected="true"] .n { background: var(--lime); color: var(--night); }
+.flow button b { display: block; margin-top: 12px; font: 700 17px/1.15 var(--display); }
+.flow button span.s { display: block; color: var(--muted); font-size: 14px; margin-top: 4px; line-height: 1.3; }
+.flow button[aria-selected="true"] span.s { color: #9FBBAA; }
+.flow-detail { margin-top: 12px; background: var(--paper); border: 1px solid var(--line); border-radius: var(--r-md); padding: 22px 24px; display: grid; grid-template-columns: auto 1fr; gap: 18px; align-items: start; min-height: 108px; }
+.flow-detail .tag { background: var(--mint); color: var(--green-deep); font-weight: 700; font-size: 13px; padding: 5px 12px; border-radius: 999px; white-space: nowrap; }
+.flow-detail p { margin: 0; color: var(--ink-2); max-width: 70ch; }
+.flow-detail code, .tile code { font: 500 .88em var(--mono); background: var(--mint); padding: 1px 6px; border-radius: 6px; }
+
+.charts { display: grid; grid-template-columns: 1.25fr 1fr; gap: 16px; margin-top: 16px; }
+.card { background: var(--paper); border: 1px solid var(--line); border-radius: var(--r-lg); padding: 26px 28px; }
+.card h3 { font-size: 21px; font-weight: 700; }
+.card .cap { color: var(--muted); font-size: 14.5px; margin: 6px 0 20px; }
+.hbar { display: grid; grid-template-columns: 132px 1fr 62px; gap: 12px; align-items: center; padding: 7px 0; font-size: 15px; position: relative; }
+.hbar .lab { color: var(--ink-2); font-weight: 600; }
+.hbar .trk { height: 18px; background: #F0F6F1; border-radius: 4px; }
+.hbar .fill { height: 100%; border-radius: 0 4px 4px 0; background: var(--green-deep); width: 0; transition: width 1s cubic-bezier(.2,.8,.2,1); }
+.hbar .fill.alt { background: #A9BDB1; }
+.hbar .fill.bad { background: var(--fail); }
+.hbar .val { font-variant-numeric: tabular-nums; font-weight: 700; text-align: right; }
+.hbar:hover .trk { background: #E4EFE7; }
+.note { color: var(--muted); font-size: 14px; margin: 14px 0 0; }
+.delta { display: inline-block; margin-top: 16px; background: var(--lime); border-radius: 999px; padding: 6px 14px; font-weight: 700; font-size: 15px; }
+.gates { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 16px; }
+.gate { background: var(--paper); border: 1px solid var(--line); border-radius: var(--r-md); padding: 22px 24px; }
+.gate b { font: 800 40px/1 var(--display); letter-spacing: -0.03em; display: block; }
+.gate span { display: block; font-weight: 700; margin-top: 8px; }
+.gate small { display: block; color: var(--muted); font-size: 14px; margin-top: 4px; line-height: 1.4; }
+.links-row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin-top: 28px; }
+.links-row img { height: 22px; display: block; }
+
+/* Lab */
+.lab-box { margin-top: 36px; background: var(--night); color: #E3F1E7; border-radius: var(--r-lg); padding: 30px; }
+.lab-head { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; justify-content: space-between; }
+.seg { display: inline-flex; background: #12261B; border-radius: 999px; padding: 4px; gap: 2px; flex-wrap: wrap; }
+.seg button { font: 600 14.5px var(--body); color: #9FBBAA; background: transparent; border: 0; border-radius: 999px; padding: 9px 16px; cursor: pointer; }
+.seg button[aria-pressed="true"] { background: var(--lime); color: var(--night); }
+.rerun { font: 600 14.5px var(--body); color: #E3F1E7; background: transparent; border: 1px solid #2B4235; border-radius: 999px; padding: 9px 16px; cursor: pointer; }
+.rerun:hover { border-color: var(--lime); color: var(--lime); }
+.lab-desc { color: #9FBBAA; margin: 16px 0 22px; max-width: 72ch; min-height: 3.2em; }
+.grid-scroll { overflow-x: auto; }
+table.runs { border-collapse: separate; border-spacing: 0 4px; width: 100%; min-width: 620px; font-size: 14.5px; }
+table.runs th { font-weight: 500; color: #7E9C8A; font-size: 12.5px; padding: 0 0 6px; text-align: center; }
+table.runs th.l, table.runs td.l { text-align: left; }
+table.runs td.name { color: #F1FAF3; padding-right: 14px; white-space: nowrap; }
+table.runs td.c { padding: 0 2px; width: 30px; }
+.cell { display: block; height: 24px; border-radius: 5px; background: var(--green); position: relative; }
+.cell.f { background: var(--fail); }
+.cell.f::after { content: "×"; position: absolute; inset: 0; display: grid; place-items: center; color: #fff; font-weight: 700; font-size: 14px; line-height: 1; }
+.cell.pending { background: #14271D; }
+.verdict { display: inline-block; padding: 3px 12px; border-radius: 999px; font-weight: 700; font-size: 13px; white-space: nowrap; margin-left: 10px; }
+.v-stable { background: #12301F; color: #7BE0A8; }
+.v-flaky { background: #3A3312; color: #F0D766; }
+.v-broken { background: #3D1815; color: #FF9C94; }
+.v-env { background: #1B2A44; color: #9CC2FF; }
+.lab-sum { display: flex; flex-wrap: wrap; gap: 10px 28px; margin-top: 20px; padding-top: 18px; border-top: 1px solid rgba(255,255,255,.1); color: #9FBBAA; }
+.lab-sum b { color: #fff; font: 700 22px var(--display); margin-right: 6px; }
+.sim { font-size: 13.5px; color: #7E9C8A; margin: 16px 0 0; }
+
+/* Career */
+.tl-card { margin-top: 36px; }
+.legend { display: flex; flex-wrap: wrap; gap: 8px 22px; font-size: 14.5px; color: var(--ink-2); font-weight: 600; margin-bottom: 18px; }
+.legend i { display: inline-block; width: 14px; height: 14px; border-radius: 4px; vertical-align: -2px; margin-right: 8px; }
+.tl { position: relative; height: 54px; }
+.tl .segm { position: absolute; top: 0; height: 100%; border-radius: 6px; border: 0; cursor: pointer; padding: 0; outline-offset: 3px; transition: transform .15s ease, filter .15s ease; }
+.tl .segm.lead { background: var(--green-deep); }
+.tl .segm.ic { background: var(--teal); }
+.tl .segm:hover, .tl .segm.on { transform: scaleY(1.18); filter: brightness(1.08); }
+.tl .segm span { position: absolute; left: 8px; right: 4px; top: 50%; transform: translateY(-50%); color: #fff; font-weight: 700; font-size: 13.5px; white-space: nowrap; overflow: hidden; text-overflow: clip; text-align: left; pointer-events: none; }
+.axis { position: relative; height: 26px; margin-top: 8px; border-top: 1px solid var(--line); }
+.axis span { position: absolute; top: 6px; transform: translateX(-50%); font-size: 13px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.axis span:first-child { transform: none; }
+.tip { margin-top: 14px; background: var(--mint); border-radius: var(--r-sm); padding: 12px 16px; font-size: 15.5px; min-height: 50px; }
+.tip b { font-weight: 700; }
+.roles { margin-top: 16px; display: grid; gap: 10px; }
+details.role { background: var(--paper); border: 1px solid var(--line); border-radius: var(--r-md); transition: border-color .15s ease; }
+details.role.on, details.role[open] { border-color: var(--green); }
+details.role summary { list-style: none; cursor: pointer; padding: 18px 22px; display: grid; grid-template-columns: 1fr auto 20px; gap: 14px; align-items: center; }
+details.role summary::-webkit-details-marker { display: none; }
+details.role summary::after { content: "+"; font: 500 24px/1 var(--display); color: var(--green-deep); text-align: center; }
+details.role[open] summary::after { content: "–"; }
+.r-co { font: 700 20px var(--display); }
+.r-ti { color: var(--muted); font-weight: 500; margin-left: 10px; }
+.r-yr { color: var(--muted); font-variant-numeric: tabular-nums; font-size: 15px; white-space: nowrap; }
+.pill { display: inline-block; margin-left: 10px; padding: 2px 10px; border-radius: 999px; background: var(--mint); color: var(--green-deep); font-size: 12.5px; font-weight: 700; vertical-align: 2px; white-space: nowrap; }
+details.role ul { margin: 0; padding: 0 22px 20px 42px; color: var(--ink-2); }
+details.role li { margin-bottom: 6px; }
+
+/* Toolbox */
+.tools { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-top: 36px; }
+.tools .card h3 { margin-bottom: 14px; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chips span { border: 1.5px solid var(--line); background: #F7FBF8; border-radius: 999px; padding: 6px 14px; font-weight: 600; font-size: 15px; }
+.chips span.hot { background: var(--ink); color: #fff; border-color: var(--ink); }
+
+/* CTA */
+.cta { margin: 96px 0 0; background: var(--night); color: #fff; border-radius: var(--r-lg); padding: clamp(32px, 6vw, 72px); position: relative; overflow: hidden; }
+.cta::before { content: ""; position: absolute; right: -120px; top: -120px; width: 380px; height: 380px; border-radius: 50%; background: radial-gradient(circle, rgba(201,244,107,.55), transparent 65%); }
+.cta h2 { max-width: 16ch; position: relative; }
+.cta p { color: #B7D0C0; max-width: 52ch; position: relative; font-size: 19px; }
+.cta .hero-actions { position: relative; }
+.cta .btn { border-color: #3A5546; color: #fff; }
+.cta .btn:hover { background: transparent; border-color: var(--lime); color: var(--lime); box-shadow: none; }
+.cta .btn.lime { color: var(--ink); border-color: var(--lime); }
+.cta .btn.lime:hover { background: #fff; border-color: #fff; color: var(--ink); }
+footer { padding: 28px 0 44px; color: var(--muted); font-size: 14px; display: flex; flex-wrap: wrap; gap: 8px 24px; justify-content: space-between; }
+
+@media (max-width: 940px) {
+  .hero { grid-template-columns: 1fr; padding-top: 48px; }
+  .term { transform: none; }
+  .stats { grid-template-columns: repeat(2, 1fr); }
+  .stat:nth-child(3) { border-left: 0; }
+  .stat:nth-child(n+3) { border-top: 1px solid var(--line); }
+  .t-a, .t-b, .t-c, .t-d { grid-column: span 6; }
+  .flow { grid-template-columns: repeat(3, 1fr); }
+  .charts, .tools { grid-template-columns: 1fr; }
+  .gates { grid-template-columns: 1fr; }
+  .nav-links a:not(.cv) { display: none; }
+}
+@media (max-width: 560px) {
+  .wrap { padding-left: 16px; padding-right: 16px; }
+  .block { padding-top: 72px; }
+  .flow { grid-template-columns: repeat(2, 1fr); }
+  .flow-detail { grid-template-columns: 1fr; }
+  .hbar { grid-template-columns: 96px 1fr 54px; font-size: 14px; }
+  .lab-box, .card, .tile { padding: 22px; }
+  details.role summary { grid-template-columns: 1fr 20px; }
+  .r-yr { grid-column: 1; grid-row: 2; }
+  .r-ti { display: block; margin-left: 0; }
+  .tl .segm span { display: none; }
+  .t-a svg.deco { opacity: .35; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
+</style>
+</head>
+<body>
+
+<div class="wrap nav">
+  <div class="nav-inner">
+    <a class="brand" href="#top"><i></i>Asa Halperin</a>
+    <nav class="nav-links" aria-label="Sections">
+      <a href="#platform">Platform</a>
+      <a href="#lab">Failure lab</a>
+      <a href="#career">Career</a>
+      <a href="#tools">Toolbox</a>
+      <a class="cv" href="Asa_Halperin_CV.pdf" download>Download CV</a>
+    </nav>
+  </div>
+</div>
+
+<main id="top">
+
+<header class="wrap hero">
+  <div>
+    <span class="avail"><b></b>Open to QA and automation leadership roles</span>
+    <h1><span>Quality,</span><span class="h1-sub">engineered.</span></h1>
+    <p class="lede">I'm Asa Halperin. For 17 years I've made software releases dependable, and for more than 8 of them I've led the QA and automation teams doing it. I build the infrastructure behind the tests: frameworks, pipelines, environments, reports, and AI inside the QA process.</p>
+    <div class="hero-actions">
+      <a class="btn solid" href="#platform">See the platform
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg></a>
+      <a class="btn" href="https://www.linkedin.com/in/asa-halperin">LinkedIn</a>
+      <a class="btn" href="https://github.com/asa-halperin/automation-platform">GitHub</a>
+    </div>
+  </div>
+
+  <div class="term" aria-label="Animated replay of the project's CI pipeline">
+    <div class="term-top"><span class="dots"><i></i><i></i><i></i></span><span id="term-meta">automation-platform · CI</span></div>
+    <div class="term-body">
+      <p class="cmd" id="cmd">$ <b>gh run view</b> --latest --branch main</p>
+      <div id="jobs"></div>
+    </div>
+    <div class="term-foot"><span class="res" id="res">loading latest run…</span><span class="foot-actions"><a id="runlink" href="https://github.com/asa-halperin/automation-platform/actions/workflows/ci.yml">Open on GitHub</a><button type="button" id="replay">Replay</button></span></div>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="stats">
+    <div class="stat"><b>17</b><span>years in software quality</span></div>
+    <div class="stat"><b>8+</b><span>years leading QA teams</span></div>
+    <div class="stat"><b>6</b><span>engineers in the largest team I led</span></div>
+    <div class="stat"><b>4</b><span>automation frameworks built from scratch</span></div>
+  </div>
+</div>
+
+<section class="wrap block" id="work">
+  <h2>What I bring to a team</h2>
+  <div class="bento">
+    <article class="tile t-a">
+      <div class="glyph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="8.5" y="14" width="7" height="7" rx="1.5"/><path d="M6.5 10v2h11v-2M12 12v2"/></svg></div>
+      <h3>Automation infrastructure, not just tests</h3>
+      <p>Shared libraries, authentication, environments and reporting that many product teams build on. A new product should plug in with a few lines, and a failing test should explain itself.</p>
+      <svg class="deco" viewBox="0 0 300 300" fill="none" aria-hidden="true"><g stroke="#C9F46B" stroke-width="1.5" opacity=".55"><circle cx="210" cy="210" r="60"/><circle cx="210" cy="210" r="100"/><circle cx="210" cy="210" r="140"/></g><g fill="#C9F46B"><circle cx="210" cy="150" r="6"/><circle cx="124" cy="160" r="6"/><circle cx="96" cy="246" r="6"/></g></svg>
+    </article>
+    <article class="tile t-b">
+      <div class="glyph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.700 6 6"/><circle cx="17.500" cy="9" r="2.400"/><path d="M16 14.300c2.900.200 5 2.600 5 5.700"/></svg></div>
+      <h3>Teams that grow</h3>
+      <p>Hiring, onboarding, mentoring and performance reviews for teams of four to six, in Israel and abroad.</p>
+    </article>
+    <article class="tile t-c">
+      <div class="glyph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.200 5.300L20 9l-4.300 3.900L17 19l-5-3-5 3 1.300-6.100L4 9l5.800-.700z"/></svg></div>
+      <h3>AI inside the QA process</h3>
+      <p>At Candex I built Claude Code skills that run only the regression tests affected by each change, with a nightly full regression as the safety net, and used Atlassian Rovo to check automation coverage against requirements.</p>
+    </article>
+    <article class="tile t-d">
+      <div class="glyph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3.500v5c0 4.600-3.200 8.200-8 9.500-4.800-1.300-8-4.900-8-9.500v-5z"/><path d="M8.500 12l2.500 2.500 4.500-5"/></svg></div>
+      <h3>Release confidence</h3>
+      <p>Test strategy, quality gates and clear readiness reporting, from requirements to production, for web, mobile and API.</p>
+    </article>
+  </div>
+</section>
+
+<section class="wrap block" id="platform">
+  <h2>The Automation Platform</h2>
+  <p class="lede">My open-source project: one test platform for several products, in TypeScript and Playwright. Every pull request goes through the same six steps. Select a step to see what happens in it.</p>
+
+  <div class="flow" role="tablist" aria-label="Pipeline steps">
+    <button role="tab" aria-selected="true" data-i="0"><span class="n">1</span><b>Pull request</b><span class="s">protected main</span></button>
+    <button role="tab" aria-selected="false" data-i="1"><span class="n">2</span><b>Build image</b><span class="s">one Docker build</span></button>
+    <button role="tab" aria-selected="false" data-i="2"><span class="n">3</span><b>Security scan</b><span class="s">Trivy gate</span></button>
+    <button role="tab" aria-selected="false" data-i="3"><span class="n">4</span><b>Publish</b><span class="s">container registry</span></button>
+    <button role="tab" aria-selected="false" data-i="4"><span class="n">5</span><b>Run tests</b><span class="s">per product, parallel</span></button>
+    <button role="tab" aria-selected="false" data-i="5"><span class="n">6</span><b>Report</b><span class="s">Allure, live</span></button>
+  </div>
+  <div class="flow-detail" role="tabpanel" aria-live="polite"><span class="tag" id="fd-tag"></span><p id="fd-text"></p></div>
+
+  <div class="card hist-card">
+    <div class="hist-head">
+      <div><h3>Recent pipeline runs</h3><p class="cap" id="hist-cap">Loading live data from GitHub Actions…</p></div>
+      <div class="legend small"><span><i style="background:#0B6B43"></i>Passed</span><span><i class="lg-fail"></i>Failed</span><span><i style="background:#A9BDB1"></i>Cancelled</span></div>
+    </div>
+    <div class="hist-plot" id="hist" role="list" aria-label="Recent pipeline runs, oldest to newest"></div>
+    <div class="tip" id="hist-tip" aria-live="polite">Point at a bar to see the run. Select it to open the run on GitHub.</div>
+    <div class="hist-stats" id="hist-stats"></div>
+  </div>
+
+  <div class="charts">
+    <div class="card">
+      <h3>Where the latest run spent its time</h3>
+      <p class="cap" id="job-cap">Job durations, minutes and seconds</p>
+      <div id="jobbars"></div>
+      <p class="note" id="job-note">Test jobs run in parallel, and only after the image passed its security scan. I chose that trade deliberately: nothing runs on an image that was not scanned.</p>
+    </div>
+    <div class="card">
+      <h3>One cache, a minute saved</h3>
+      <p class="cap">Image job before and after sharing the scanner database between steps. Measured on 12 November 2026.</p>
+      <div class="hbar" title="Before: 2m 36s"><span class="lab">Before</span><div class="trk"><div class="fill alt" data-w="100"></div></div><span class="val">2:36</span></div>
+      <div class="hbar" title="After: 1m 44s"><span class="lab">After</span><div class="trk"><div class="fill" data-w="66.700"></div></div><span class="val">1:44</span></div>
+      <span class="delta">52 seconds faster, a third of the job</span>
+      <p class="note">Each scan step used to download the vulnerability database again. One shared volume fixed it.</p>
+    </div>
+  </div>
+
+  <div class="gates">
+    <div class="gate" id="g-secret"><b>…</b><span>Secret scan of the test image</span><small>Loading the latest result.</small></div>
+    <div class="gate" id="g-vuln"><b>…</b><span>Fixable critical vulnerabilities gate</span><small>Loading the latest result.</small></div>
+    <div class="gate" id="g-tests"><b>…</b><span>Product test suites</span><small>Loading the latest result.</small></div>
+  </div>
+
+  <div class="links-row">
+    <a class="btn solid" href="https://asa-halperin.github.io/automation-platform/">Open the live test report</a>
+    <a class="btn" href="https://github.com/asa-halperin/automation-platform">Read the code</a>
+    <a href="https://github.com/asa-halperin/automation-platform/actions/workflows/ci.yml"><img src="https://github.com/asa-halperin/automation-platform/actions/workflows/ci.yml/badge.svg" alt="Current CI status"></a>
+  </div>
+</section>
+
+<section class="wrap block" id="lab">
+  <h2>Failure lab</h2>
+  <p class="lede">Not every red test means the same thing. The first question is always which kind of failure it is. Switch the fault profile and watch twelve runs of the same suite.</p>
+
+  <div class="lab-box">
+    <div class="lab-head">
+      <div class="seg" role="group" aria-label="Fault profile">
+        <button type="button" aria-pressed="true" data-p="calm">Calm</button>
+        <button type="button" aria-pressed="false" data-p="flaky">Flaky</button>
+        <button type="button" aria-pressed="false" data-p="broken">Real bug</button>
+        <button type="button" aria-pressed="false" data-p="env">Environment down</button>
+      </div>
+      <button type="button" class="rerun" id="rerun">Run 12 more times</button>
+    </div>
+    <p class="lab-desc" id="lab-desc"></p>
+    <div class="grid-scroll">
+      <table class="runs" id="runs"><thead></thead><tbody></tbody></table>
+    </div>
+    <div class="lab-sum" id="lab-sum"></div>
+    <p class="sim">This is a simulation in your browser. It shows the fault profiles I am building into the platform's next product, a padel court booking app with fault injection.</p>
+  </div>
+</section>
+
+<section class="wrap block" id="career">
+  <h2>Seventeen years, six companies</h2>
+  <p class="lede">Select a period on the timeline to see the role.</p>
+
+  <div class="card tl-card">
+    <div class="legend"><span><i style="background:#0B6B43"></i>Leading a QA team</span><span><i style="background:#2BA8A0"></i>Hands-on engineer</span></div>
+    <div class="tl" id="tl"></div>
+    <div class="axis" id="axis"></div>
+    <div class="tip" id="tip" aria-live="polite"></div>
+  </div>
+
+  <div class="roles" id="roles">
+    <details class="role" data-k="candex" open>
+      <summary><span><span class="r-co">Candex</span><span class="r-ti">Software Quality &amp; Automation Engineer</span></span><span class="r-yr">2024 – present</span></summary>
+      <ul>
+        <li>Expanded automation in TypeScript and Playwright alongside an existing Java and Selenium suite.</li>
+        <li>Built Claude Code skills that run only the regression tests affected by each change, with a nightly full regression as a safety net.</li>
+        <li>Used Atlassian Rovo to analyze requirements in Jira and Confluence and verify automation coverage against them.</li>
+        <li>Worked directly with local R&amp;D and Product, in sync with the QA team in Canada.</li>
+      </ul>
+    </details>
+    <details class="role" data-k="eldan">
+      <summary><span><span class="r-co">Eldan</span><span class="r-ti">QA Team Lead</span><span class="pill">team of 5</span></span><span class="r-yr">2023 – 2024</span></summary>
+      <ul>
+        <li>Recruited, trained and led five QA and automation engineers.</li>
+        <li>Introduced Jira and Xray for test management and built a Java and Selenium framework.</li>
+        <li>Owned the QA cycle from requirements to release, including Microsoft Dynamics CRM systems.</li>
+      </ul>
+    </details>
+    <details class="role" data-k="veev">
+      <summary><span><span class="r-co">Veev</span><span class="r-ti">QA Team Lead</span><span class="pill">team of 4</span></span><span class="r-yr">2021 – 2023</span></summary>
+      <ul>
+        <li>Led a cross-border QA team in Israel and Ukraine.</li>
+        <li>Built Web (Selenium) and Mobile (Appium) frameworks in Java, running in a Jenkins pipeline.</li>
+        <li>Investigated production issues with DevTools and Logz.io on AWS.</li>
+      </ul>
+    </details>
+    <details class="role" data-k="impala">
+      <summary><span><span class="r-co">Impala Digital</span><span class="r-ti">QA Team Lead</span><span class="pill">team of up to 6</span></span><span class="r-yr">2018 – 2021</span></summary>
+      <ul>
+        <li>Managed QA engineers locally and abroad across Web and AWS environments.</li>
+        <li>Established Java and Selenium automation with TestNG, RestAssured, Maven and Jenkins.</li>
+        <li>Ran basic load tests with JMeter.</li>
+      </ul>
+    </details>
+    <details class="role" data-k="click">
+      <summary><span><span class="r-co">ClickDimensions</span><span class="r-ti">QA Automation Engineer</span></span><span class="r-yr">2015 – 2018</span></summary>
+      <ul>
+        <li>Owned quality for a product embedded in Microsoft Dynamics CRM.</li>
+        <li>Built C# and Selenium verification suites and wrote STP and STD documents.</li>
+      </ul>
+    </details>
+    <details class="role" data-k="cool">
+      <summary><span><span class="r-co">Coolvision</span><span class="r-ti">QA Engineer, then QA Team Lead</span></span><span class="r-yr">2009 – 2015</span></summary>
+      <ul>
+        <li>Promoted to team lead after three years and led the team for the next three.</li>
+        <li>Functional, end-to-end and compatibility testing for web and mobile, with complex SQL.</li>
+      </ul>
+    </details>
+  </div>
+</section>
+
+<section class="wrap block" id="tools">
+  <h2>Toolbox</h2>
+  <div class="tools">
+    <div class="card"><h3>UI and mobile automation</h3><div class="chips"><span class="hot">Playwright</span><span class="hot">Selenium</span><span>Appium</span><span>TypeScript</span><span>Java</span><span>C#</span><span>TestNG</span></div></div>
+    <div class="card"><h3>API, data and performance</h3><div class="chips"><span class="hot">RestAssured</span><span>Postman</span><span>SoapUI</span><span>SQL</span><span>JMeter</span></div></div>
+    <div class="card"><h3>CI/CD and infrastructure</h3><div class="chips"><span class="hot">GitHub Actions</span><span class="hot">Docker</span><span>Jenkins</span><span>Trivy</span><span>AWS</span><span>Logz.io</span></div></div>
+    <div class="card"><h3>AI and reporting</h3><div class="chips"><span class="hot">Claude Code</span><span>GitHub Copilot</span><span>Atlassian Rovo</span><span>Allure</span><span>Jira</span><span>Xray</span><span>TestRail</span></div></div>
+  </div>
+</section>
+
+<div class="wrap">
+  <section class="cta">
+    <h2>Looking for someone to own quality?</h2>
+    <p>I'm looking for my next QA or automation leadership role in central Israel. I'd be glad to talk.</p>
+    <div class="hero-actions">
+      <a class="btn lime" href="mailto:asahalp@gmail.com">Email me</a>
+      <a class="btn" href="https://www.linkedin.com/in/asa-halperin">LinkedIn</a>
+      <a class="btn" href="Asa_Halperin_CV.pdf" download>Download CV</a>
+    </div>
+  </section>
+  <footer><span>© 2026 Asa Halperin</span><span>Built by hand and hosted on GitHub Pages</span></footer>
+</div>
+
+</main>
+
+<script>
+(function () {
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---------- Live data from GitHub Actions ---------- */
+  var REPO = 'asa-halperin/automation-platform';
+  var API = 'https://api.github.com/repos/' + REPO;
+  var RECORDED = {
+    recorded: true, when: '12 November 2026', total: 251, ok: true,
+    url: 'https://github.com/' + REPO + '/actions/workflows/ci.yml',
+    jobs: [
+      { name: 'image', dur: 104, off: 0, c: 'success' },
+      { name: 'test (gitea)', dur: 82, off: 110, c: 'success' },
+      { name: 'test (juice-shop)', dur: 70, off: 110, c: 'success' },
+      { name: 'report', dur: 24, off: 200, c: 'success' }
+    ]
+  };
+  var SUB = { 'image': 'build · security scan · publish', 'report': 'combined Allure report', 'deploy-report': 'published to GitHub Pages' };
+  function esc(t) { return String(t).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+  function secs(a, b) { return Math.max(0, Math.round((new Date(b) - new Date(a)) / 1000)); }
+  function fmt(s) { var m = Math.floor(s / 60), r = s % 60; return m ? m + 'm ' + (r < 10 ? '0' : '') + r + 's' : r + 's'; }
+  function clock(s) { var m = Math.floor(s / 60), r = s % 60; return m + ':' + (r < 10 ? '0' : '') + r; }
+  function ago(d) {
+    var s = (Date.now() - new Date(d)) / 1000;
+    if (s < 3600) return Math.max(1, Math.round(s / 60)) + ' min ago';
+    if (s < 86400) return Math.round(s / 3600) + ' h ago';
+    return Math.round(s / 86400) + ' days ago';
+  }
+  function day(d) { return new Date(d).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' }); }
+  function getJSON(url) {
+    var key = 'gh:' + url;
+    try { var hit = JSON.parse(sessionStorage.getItem(key)); if (hit && Date.now() - hit.t < 300000) return Promise.resolve(hit.d); } catch (e) {}
+    return fetch(url, { headers: { Accept: 'application/vnd.github+json' } }).then(function (r) {
+      if (!r.ok) throw new Error('GitHub ' + r.status);
+      return r.json();
+    }).then(function (d) { try { sessionStorage.setItem(key, JSON.stringify({ t: Date.now(), d: d })); } catch (e) {} return d; });
+  }
+
+  /* Hero terminal: replays the real timing of the run, compressed to a few seconds */
+  var res = document.getElementById('res'), jobsBox = document.getElementById('jobs'), timers = [], current = RECORDED;
+  function drawTerminal(run) {
+    current = run;
+    document.getElementById('term-meta').innerHTML = run.recorded
+      ? 'automation-platform · recorded ' + esc(run.when)
+      : '<span class="livedot"></span>live · run #' + run.num + ' · ' + esc(run.sha) + ' · ' + ago(run.at);
+    document.getElementById('runlink').href = run.url;
+    jobsBox.innerHTML = run.jobs.map(function (j) {
+      var sub = SUB[j.name] || (j.name.indexOf('test') === 0 ? 'runs inside the scanned image' : '');
+      return '<div class="job"><span class="ic"></span><span class="nm">' + esc(j.name) + (sub ? '<small>' + sub + '</small>' : '') + '</span><span class="tm">' + fmt(j.dur) + '</span><div class="bar"><i></i></div></div>';
+    }).join('');
+    play();
+  }
+  function finish() {
+    var r = current;
+    res.className = 'res ' + (r.ok ? 'ok' : 'bad');
+    res.textContent = (r.ok ? '✓ passed in ' : '× failed after ') + fmt(r.total);
+  }
+  function play() {
+    timers.forEach(clearTimeout); timers = [];
+    var els = [].slice.call(jobsBox.children), r = current;
+    els.forEach(function (el) { el.className = 'job'; var b = el.querySelector('.bar i'); b.style.transition = 'none'; b.style.width = '0'; });
+    function end(el, j) { el.classList.remove('run'); el.classList.add(j.c === 'success' ? 'done' : 'fail'); }
+    if (reduce) { els.forEach(function (el, i) { end(el, r.jobs[i]); el.querySelector('.bar i').style.width = '100%'; }); finish(); return; }
+    res.className = 'res'; res.textContent = 'replaying…';
+    var span = Math.max.apply(null, r.jobs.map(function (j) { return j.off + j.dur; })) || 1, k = 6000 / span;
+    els.forEach(function (el, i) {
+      var j = r.jobs[i], ms = Math.max(350, j.dur * k), at = 400 + j.off * k;
+      timers.push(setTimeout(function () { el.classList.add('run'); var b = el.querySelector('.bar i'); void b.offsetWidth; b.style.transition = 'width ' + ms + 'ms linear'; b.style.width = '100%'; }, at));
+      timers.push(setTimeout(function () { end(el, j); }, at + ms));
+    });
+    timers.push(setTimeout(finish, 400 + span * k + 500));
+  }
+  document.getElementById('replay').addEventListener('click', play);
+
+  /* Job duration bars */
+  function drawJobBars(run) {
+    var max = Math.max.apply(null, run.jobs.map(function (j) { return j.dur; })) || 1;
+    document.getElementById('jobbars').innerHTML = run.jobs.map(function (j) {
+      return '<div class="hbar" title="' + esc(j.name) + ': ' + fmt(j.dur) + '"><span class="lab">' + esc(j.name) + '</span><div class="trk"><div class="fill' + (j.c === 'success' ? '' : ' bad') + '" data-w="' + (j.dur / max * 100).toFixed(1) + '"></div></div><span class="val">' + clock(j.dur) + '</span></div>';
+    }).join('');
+    document.getElementById('job-cap').textContent = run.recorded
+      ? 'Recorded on ' + run.when + '. Whole run, including queueing: ' + fmt(run.total) + '.'
+      : 'Run #' + run.num + ' on main, ' + day(run.at) + '. Whole run, including queueing: ' + fmt(run.total) + '.';
+    watchFills();
+  }
+
+  /* Quality gates, read from the steps of the latest run */
+  function gate(id, state, small) {
+    var g = document.getElementById(id), b = g.querySelector('b');
+    b.className = state === 'success' ? 'ok' : state ? 'bad' : '';
+    b.textContent = state === 'success' ? 'Passed' : state === 'failure' ? 'Failed' : state ? state : 'n/a';
+    g.querySelector('small').textContent = small;
+  }
+  function drawGates(run, rawJobs) {
+    if (run.recorded) {
+      gate('g-secret', 'success', 'Recorded on ' + run.when + '. Live status is unavailable right now.');
+      gate('g-vuln', 'success', 'Recorded on ' + run.when + '. Live status is unavailable right now.');
+      var gt = document.getElementById('g-tests'); gt.querySelector('b').className = 'ok'; gt.querySelector('b').textContent = '9 / 9';
+      gt.querySelector('span').textContent = 'tests passed'; gt.querySelector('small').textContent = 'Recorded on ' + run.when + '.';
+      return;
+    }
+    var when = 'Checked in run #' + run.num + ', ' + ago(run.at) + '.';
+    var img = rawJobs.filter(function (j) { return j.name === 'image'; })[0], steps = (img && img.steps) || [];
+    function step(word) { var s = steps.filter(function (x) { return x.name.toLowerCase().indexOf(word) > -1; })[0]; return s ? s.conclusion : null; }
+    gate('g-secret', step('secret'), 'No secrets in the layers this project adds. ' + when);
+    gate('g-vuln', step('critical'), 'The pipeline stops on a critical vulnerability that has a fix. ' + when);
+    var suites = rawJobs.filter(function (j) { return j.name.indexOf('test') === 0; });
+    var green = suites.filter(function (j) { return j.conclusion === 'success'; }).length;
+    var gt = document.getElementById('g-tests'), b = gt.querySelector('b');
+    b.className = green === suites.length ? 'ok' : 'bad'; b.textContent = green + ' / ' + suites.length;
+    gt.querySelector('span').textContent = 'product test suites green';
+    gt.querySelector('small').textContent = when;
+    /* If the Allure report on the same site exposes a summary, show real test counts */
+    if (/github\.io$/.test(location.hostname)) {
+      fetch('/automation-platform/summary.json').then(function (r) { return r.ok ? r.json() : null; }).then(function (sum) {
+        var st = sum && sum.stats; if (!st || typeof st.total !== 'number') return;
+        var passed = typeof st.passed === 'number' ? st.passed : 0;
+        b.className = passed === st.total ? 'ok' : 'bad'; b.textContent = passed + ' / ' + st.total;
+        gt.querySelector('span').textContent = 'tests passed in the latest report';
+      }).catch(function () {});
+    }
+  }
+
+  /* Run history */
+  function drawHistory(runs) {
+    var box = document.getElementById('hist'), tip = document.getElementById('hist-tip');
+    var list = runs.slice(0, 30).reverse().map(function (r) {
+      return { num: r.run_number, c: r.conclusion, dur: secs(r.run_started_at || r.created_at, r.updated_at), at: r.run_started_at || r.created_at, br: r.head_branch, url: r.html_url, title: r.display_title || '' };
+    });
+    var max = Math.max.apply(null, list.map(function (r) { return r.dur; })) || 1;
+    box.innerHTML = '';
+    list.forEach(function (r) {
+      var a = document.createElement('a'), cls = r.c === 'success' ? 'success' : r.c === 'failure' ? 'failure' : 'cancelled';
+      var word = cls === 'success' ? 'passed' : cls === 'failure' ? 'failed' : (r.c || 'cancelled');
+      a.href = r.url; a.className = cls; a.setAttribute('role', 'listitem');
+      a.style.height = Math.max(4, r.dur / max * 100) + '%';
+      var text = 'Run #' + r.num + ' · ' + word + ' · ' + fmt(r.dur) + ' · ' + r.br + ' · ' + day(r.at);
+      a.setAttribute('aria-label', text);
+      function show() { tip.innerHTML = '<b>Run #' + r.num + '</b> · ' + word + ' · ' + fmt(r.dur) + ' · ' + esc(r.br) + ' · ' + day(r.at) + (r.title ? '<br>' + esc(r.title) : ''); }
+      a.addEventListener('mouseenter', show); a.addEventListener('focus', show);
+      box.appendChild(a);
+    });
+    var ok = list.filter(function (r) { return r.c === 'success'; }), bad = list.filter(function (r) { return r.c === 'failure'; });
+    var d = ok.map(function (r) { return r.dur; }).sort(function (x, y) { return x - y; }), med = d.length ? d[Math.floor(d.length / 2)] : 0;
+    var decided = ok.length + bad.length;
+    document.getElementById('hist-cap').textContent = 'Live from GitHub Actions: the last ' + list.length + ' completed runs on all branches, oldest to newest. Bar height is run duration.';
+    document.getElementById('hist-stats').innerHTML =
+      '<span><b>' + (decided ? Math.round(ok.length / decided * 100) : 0) + '%</b>of runs passed</span>' +
+      '<span><b>' + bad.length + '</b>failed runs, shown here as they happened</span>' +
+      '<span><b>' + fmt(med) + '</b>median duration of a passing run</span>';
+  }
+  function historyUnavailable() {
+    document.getElementById('hist').innerHTML = '<p class="hist-empty">Live history is unavailable right now.</p>';
+    document.getElementById('hist-cap').textContent = 'GitHub did not answer. The full history is on the Actions page of the repository.';
+    document.getElementById('hist-tip').style.display = 'none';
+  }
+
+  /* Bars grow when scrolled into view */
+  var io = null;
+  function watchFills() {
+    var fills = [].slice.call(document.querySelectorAll('.fill:not([data-seen])'));
+    fills.forEach(function (f) {
+      f.setAttribute('data-seen', '1');
+      if ('IntersectionObserver' in window && !reduce) {
+        io = io || new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.style.width = e.target.dataset.w + '%'; io.unobserve(e.target); } }); }, { threshold: .4 });
+        io.observe(f);
+      } else { f.style.width = f.dataset.w + '%'; }
+    });
+  }
+  watchFills();
+
+  function useRecorded() { drawTerminal(RECORDED); drawJobBars(RECORDED); drawGates(RECORDED, []); }
+  getJSON(API + '/actions/workflows/ci.yml/runs?status=completed&per_page=40').then(function (d) {
+    var runs = d.workflow_runs || [];
+    if (!runs.length) throw new Error('no runs');
+    drawHistory(runs);
+    var latest = runs.filter(function (r) { return r.head_branch === 'main'; })[0] || runs[0];
+    return getJSON(API + '/actions/runs/' + latest.id + '/jobs?per_page=30').then(function (jd) {
+      var raw = (jd.jobs || []).filter(function (j) { return j.conclusion && j.conclusion !== 'skipped' && j.started_at && j.completed_at; });
+      if (!raw.length) throw new Error('no jobs');
+      raw.sort(function (a, b) { return new Date(a.started_at) - new Date(b.started_at); });
+      var t0 = raw[0].started_at;
+      var run = {
+        num: latest.run_number, sha: latest.head_sha.slice(0, 7), at: latest.run_started_at || latest.created_at,
+        total: secs(latest.run_started_at || latest.created_at, latest.updated_at), ok: latest.conclusion === 'success', url: latest.html_url,
+        jobs: raw.map(function (j) { return { name: j.name, dur: secs(j.started_at, j.completed_at), off: secs(t0, j.started_at), c: j.conclusion }; })
+      };
+      drawTerminal(run); drawJobBars(run); drawGates(run, raw);
+    });
+  }).catch(function () {
+    if (!document.getElementById('hist').children.length) historyUnavailable();
+    useRecorded();
+  });
+
+
+  var steps = [
+    ['Protected main', 'Nothing reaches <code>main</code> directly. Every change is a pull request, and the test and image checks are required before merge.'],
+    ['Built once', 'One Docker image holds the tests, browsers and exact dependency versions, on top of the official Playwright image. The same image runs on a laptop, in CI and later on Kubernetes.'],
+    ['Quality gate', 'Trivy scans the image. Secrets or a fixable critical vulnerability stop the pipeline. High-severity findings are reported without blocking, so the gate stays meaningful and never permanently red.'],
+    ['Tagged by commit', 'Only an image that passed the scan is pushed to GitHub Container Registry, tagged with the commit SHA, so every run is traceable to the code that produced it.'],
+    ['Same image, every product', 'Each product gets its own parallel job that pulls the scanned image and runs its suite inside it, with retries and Playwright traces on failure.'],
+    ['One report', 'Results from all products merge into a single Allure report, published to GitHub Pages on every merge to main.']
+  ];
+  var tabs = [].slice.call(document.querySelectorAll('.flow button'));
+  function pick(i) {
+    tabs.forEach(function (b, k) { b.setAttribute('aria-selected', k === i ? 'true' : 'false'); });
+    document.getElementById('fd-tag').textContent = steps[i][0];
+    document.getElementById('fd-text').innerHTML = steps[i][1];
+  }
+  tabs.forEach(function (b, i) { b.addEventListener('click', function () { pick(i); }); });
+  pick(0);
+
+  /* Failure lab */
+  var tests = ['Sign in', 'Browse free slots', 'Book a 60 minute slot', 'Price of a 90 minute slot', 'Cancel a booking', 'Two players, same slot', 'My bookings list', 'Sign out'];
+  var RUNS = 12, profile = 'calm', seed = 7;
+  var desc = {
+    calm: 'Faults are off. Every run is green, which is what the required checks on a pull request see.',
+    flaky: 'Random latency and a race on the last free slot. The same code passes and fails between runs. Retrying hides it, so the platform has to track it.',
+    broken: 'A real defect: a 90 minute slot is priced as 60. That test fails on every run, in the same place. This is a bug to file, not a test to retry.',
+    env: 'The API went down for two runs. Everything fails together and recovers together. The product is fine and the tests are fine.'
+  };
+  function rnd() { seed = (seed * 1664525 + 1013904223) % 4294967296; return seed / 4294967296; }
+  function simulate() {
+    return tests.map(function (name, ti) {
+      var row = [];
+      for (var r = 0; r < RUNS; r++) {
+        var fail = false;
+        if (profile === 'flaky' || profile === 'broken') { if (ti === 5 && rnd() < .34) fail = true; if (ti === 1 && rnd() < .18) fail = true; }
+        if (profile === 'broken' && ti === 3) fail = true;
+        if (profile === 'env' && (r === 6 || r === 7)) fail = true;
+        row.push(fail);
+      }
+      return row;
+    });
+  }
+  function verdict(row, all) {
+    var f = row.filter(Boolean).length;
+    if (f === 0) return ['Stable', 'v-stable'];
+    if (f === RUNS) return ['Real bug', 'v-broken'];
+    var envOnly = row.every(function (x, r) { return !x || all.every(function (o) { return o[r]; }); });
+    if (envOnly) return ['Environment', 'v-env'];
+    return ['Flaky', 'v-flaky'];
+  }
+  function render() {
+    document.getElementById('lab-desc').textContent = desc[profile];
+    var data = simulate(), t = document.getElementById('runs');
+    var head = '<tr><th class="l">Test</th>';
+    for (var r = 1; r <= RUNS; r++) head += '<th>' + r + '</th>';
+    t.tHead.innerHTML = head + '<th class="l" style="padding-left:12px">Verdict</th></tr>';
+    var counts = { Stable: 0, Flaky: 0, 'Real bug': 0, Environment: 0 }, passed = 0, html = '';
+    data.forEach(function (row, i) {
+      var v = verdict(row, data); counts[v[0]]++;
+      html += '<tr><td class="name l">' + tests[i] + '</td>';
+      row.forEach(function (f, r) { if (!f) passed++; html += '<td class="c"><span class="cell' + (f ? ' f' : '') + '" title="Run ' + (r + 1) + ': ' + (f ? 'failed' : 'passed') + '"></span></td>'; });
+      html += '<td class="l"><span class="verdict ' + v[1] + '">' + v[0] + '</span></td></tr>';
+    });
+    t.tBodies[0].innerHTML = html;
+    var total = tests.length * RUNS;
+    document.getElementById('lab-sum').innerHTML =
+      '<span><b>' + Math.round(passed / total * 100) + '%</b>pass rate</span>' +
+      '<span><b>' + counts.Stable + '</b>stable</span><span><b>' + counts.Flaky + '</b>flaky</span>' +
+      '<span><b>' + counts['Real bug'] + '</b>real bug</span><span><b>' + counts.Environment + '</b>hit by environment</span>';
+  }
+  [].slice.call(document.querySelectorAll('.seg button')).forEach(function (b) {
+    b.addEventListener('click', function () {
+      profile = b.dataset.p;
+      [].slice.call(document.querySelectorAll('.seg button')).forEach(function (o) { o.setAttribute('aria-pressed', o === b ? 'true' : 'false'); });
+      render();
+    });
+  });
+  document.getElementById('rerun').addEventListener('click', function () { seed = Math.floor(Math.random() * 1e9); render(); });
+  render();
+
+  /* Career timeline */
+  var T0 = 2009, T1 = 2027;
+  var segs = [
+    { k: 'cool', a: 2009, b: 2012, t: 'ic', n: 'Coolvision', d: 'QA Engineer, 2009 to 2012' },
+    { k: 'cool', a: 2012, b: 2015.800, t: 'lead', n: 'Coolvision', d: 'QA Team Lead, 2012 to 2015' },
+    { k: 'click', a: 2015.830, b: 2018.500, t: 'ic', n: 'ClickDimensions', d: 'QA Automation Engineer, 2015 to 2018' },
+    { k: 'impala', a: 2018.500, b: 2021.500, t: 'lead', n: 'Impala Digital', d: 'QA Team Lead, team of up to 6, 2018 to 2021' },
+    { k: 'veev', a: 2021.600, b: 2023.050, t: 'lead', n: 'Veev', d: 'QA Team Lead, team of 4, 2021 to 2023' },
+    { k: 'eldan', a: 2023.350, b: 2024.600, t: 'lead', n: 'Eldan', d: 'QA Team Lead, team of 5, 2023 to 2024' },
+    { k: 'candex', a: 2024.670, b: 2026.870, t: 'ic', n: 'Candex', d: 'Software Quality & Automation Engineer, 2024 to present' }
+  ];
+  var tl = document.getElementById('tl'), tip = document.getElementById('tip');
+  function pct(y) { return (y - T0) / (T1 - T0) * 100; }
+  function show(s, el) {
+    tip.innerHTML = '<b>' + s.n + '</b> · ' + s.d + (s.t === 'lead' ? ' · leading a team' : '');
+    [].slice.call(tl.children).forEach(function (c) { c.classList.toggle('on', c === el); });
+    [].slice.call(document.querySelectorAll('details.role')).forEach(function (d) { d.classList.toggle('on', d.dataset.k === s.k); });
+  }
+  segs.forEach(function (s) {
+    var b = document.createElement('button');
+    b.type = 'button'; b.className = 'segm ' + s.t;
+    b.style.left = 'calc(' + pct(s.a) + '% + 1px)'; b.style.width = 'calc(' + (pct(s.b) - pct(s.a)) + '% - 2px)';
+    b.setAttribute('aria-label', s.n + ': ' + s.d);
+    b.innerHTML = '<span>' + s.n + '</span>';
+    b.addEventListener('mouseenter', function () { show(s, b); });
+    b.addEventListener('focus', function () { show(s, b); });
+    b.addEventListener('click', function () {
+      show(s, b);
+      var d = document.querySelector('details.role[data-k="' + s.k + '"]');
+      [].slice.call(document.querySelectorAll('details.role')).forEach(function (o) { o.open = o === d; });
+    });
+    tl.appendChild(b);
+  });
+  var ax = document.getElementById('axis');
+  [2009, 2012, 2015, 2018, 2021, 2024].forEach(function (y) { var s = document.createElement('span'); s.style.left = pct(y) + '%'; s.textContent = y; ax.appendChild(s); });
+  show(segs[segs.length - 1], tl.lastChild);
+})();
+</script>
+</body>
+</html>
