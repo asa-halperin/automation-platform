@@ -1,0 +1,37 @@
+:root { --ink: #10231a; --muted: #5d7167; --line: #d3e0d7; --bg: #f3f8f4; --paper: #fff; --green: #0b6b43; --red: #b3261e; }
+* { box-sizing: border-box; }
+body { margin: 0; font: 16px/1.5 system-ui, sans-serif; color: var(--ink); background: var(--bg); }
+.top { display: flex; justify-content: space-between; align-items: center; padding: 14px 20px; background: var(--ink); color: #fff; }
+.logo { font-weight: 700; font-size: 18px; }
+#who { margin-right: 12px; opacity: .85; }
+main { max-width: 860px; margin: 0 auto; padding: 24px 16px 60px; }
+h1 { font-size: 26px; margin: 0 0 16px; }
+h2 { font-size: 20px; margin: 0 0 4px; }
+label { display: block; font-weight: 600; margin-bottom: 14px; }
+input, select { display: block; width: 100%; margin-top: 6px; padding: 9px 10px; font: inherit; border: 1px solid var(--line); border-radius: 6px; background: #fff; }
+button { font: inherit; font-weight: 600; padding: 9px 16px; border-radius: 6px; border: 1px solid var(--green); background: var(--green); color: #fff; cursor: pointer; }
+button:hover { filter: brightness(1.1); }
+button:focus-visible, input:focus-visible, select:focus-visible { outline: 3px solid #7fd0a6; outline-offset: 2px; }
+button.secondary { background: #fff; color: var(--ink); border-color: var(--line); }
+button.link { background: none; border: 0; color: #fff; text-decoration: underline; padding: 0; }
+button.danger { background: #fff; color: var(--red); border-color: var(--red); padding: 5px 12px; }
+#login-view { max-width: 360px; margin: 40px auto; background: var(--paper); padding: 28px; border: 1px solid var(--line); border-radius: 10px; }
+.tabs { display: flex; gap: 8px; margin-bottom: 24px; }
+.tabs button { background: #fff; color: var(--ink); border-color: var(--line); }
+.tabs button[aria-pressed="true"] { background: var(--ink); color: #fff; border-color: var(--ink); }
+.date { max-width: 220px; }
+.muted { color: var(--muted); }
+.error { color: var(--red); font-weight: 600; }
+.notice { background: #e1f3e8; border: 1px solid #a9d8bd; padding: 10px 14px; border-radius: 6px; }
+.scroll { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; background: var(--paper); border: 1px solid var(--line); }
+th, td { padding: 8px 10px; border-bottom: 1px solid var(--line); text-align: left; }
+thead th { background: #e8f1eb; }
+#slots td { text-align: center; }
+#slots button { width: 100%; padding: 5px 8px; font-weight: 500; }
+#slots .taken { color: var(--muted); }
+dialog { border: 1px solid var(--line); border-radius: 10px; padding: 24px; width: min(380px, 92vw); }
+dialog::backdrop { background: rgba(16, 35, 26, .45); }
+.price { font-size: 18px; font-weight: 700; }
+.actions { display: flex; justify-content: flex-end; gap: 8px; }
+[hidden] { display: none !important; }

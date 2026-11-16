@@ -5,11 +5,14 @@ import {
   hoursTaken, isFree, priceFor, slotsFor,
 } from './data.js';
 import type { Booking } from './data.js';
+import { fileURLToPath } from 'node:url';
 
 
 
 const app = express();
 app.use(express.json());
+const publicDir = fileURLToPath(new URL('../public', import.meta.url));
+app.use(express.static(publicDir));
 
 const DATE_FORMAT = /^\d{4}-\d{2}-\d{2}$/;
 
