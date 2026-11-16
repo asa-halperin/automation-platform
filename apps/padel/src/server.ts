@@ -27,14 +27,10 @@ app.get('/api/courts', (_req, res) => {
   res.json(courts);
 });
 
-app.listen(port, () => {
-  console.log(`Padel app listening on http://localhost:${port}`);
-});
-
 app.get('/api/slots', (req, res) => {
   
   const date = req.query.date;
-  if (typeof date !== 'string' || !/^\d{4}-\d{2}-\d{2}$/.test(date)) {
+    if (typeof date !== 'string' || !DATE_FORMAT.test(date)) {
     res.status(400).json({ error: 'date must be in YYYY-MM-DD format' });
     return;
   }
@@ -67,4 +63,19 @@ app.post('/api/bookings', (req, res) => {
   };
   bookings.push(booking);
   res.status(201).json(booking);
+});
+
+app.get('/api/bookings', (_req, res) => {
+  res.json(bookings);
+});
+
+app.delete('/api/bookings/:id', (req, res) => {
+  const index = bookings.findIndex((b) => b.id === req.params.id);
+  if (index === -1) return reject(res, 404, 'booking not found');
+  bookings.splice(index, 1);
+  res.status(204).end();
+});
+
+app.listen(port, () => {
+  console.log(`Padel app listening on http://localhost:${port}`);
 });
