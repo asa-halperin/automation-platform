@@ -17,6 +17,16 @@ function reject(res: express.Response, status: number, error: string): void {
   res.status(status).json({ error });
 }
 
+const USERNAME = process.env.PADEL_USER ?? 'player';
+const PASSWORD = process.env.PADEL_PASSWORD ?? 'padel123';
+const sessions = new Set<string>();
+
+function requireLogin(req: express.Request, res: express.Response, next: express.NextFunction): void {
+  const token = req.headers.authorization?.replace('Bearer ', '');
+  if (!token || !sessions.has(token)) return reject(res, 401, 'login required');
+  next();
+}
+
 const port = Number(process.env.PORT ?? 3002);
 
 app.get('/health', (_req, res) => {
@@ -37,7 +47,17 @@ app.get('/api/slots', (req, res) => {
   res.json(slotsFor(date));
 });
 
-app.post('/api/bookings', (req, res) => {
+app.post('/api/login', (req, res) => {
+  const { username, password } = req.body ?? {};
+  if (username !== USERNAME || password !== PASSWORD) {
+    return reject(res, 401, 'wrong username or password');
+  }
+  const token = randomUUID();
+  sessions.add(token);
+  res.json({ token });
+});
+
+app.post('/api/bookings', requireLogin, (req, res) => {
   const { courtId, date, hour, durationMinutes, players } = req.body ?? {};
 
   const court = courts.find((c) => c.id === courtId);
@@ -65,11 +85,11 @@ app.post('/api/bookings', (req, res) => {
   res.status(201).json(booking);
 });
 
-app.get('/api/bookings', (_req, res) => {
+app.get('/api/bookings', requireLogin, (_req, res) => {
   res.json(bookings);
 });
 
-app.delete('/api/bookings/:id', (req, res) => {
+app.delete('/api/bookings/:id', requireLogin, (req, res) => {
   const index = bookings.findIndex((b) => b.id === req.params.id);
   if (index === -1) return reject(res, 404, 'booking not found');
   bookings.splice(index, 1);
