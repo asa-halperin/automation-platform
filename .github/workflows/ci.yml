@@ -17,7 +17,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        product: [gitea, juice-shop]
+        product: [gitea, juice-shop, padel]
     name: test (${{ matrix.product }})
     steps:
       - uses: actions/checkout@v5
