@@ -6,11 +6,18 @@ import {
 } from './data.js';
 import type { Booking } from './data.js';
 import { fileURLToPath } from 'node:url';
+import { chance, profile, random, seed } from './faults.js';
 
 
 
 const app = express();
 app.use(express.json());
+app.use('/api', async (_req, _res, next) => {
+  if (profile === 'flaky' && chance(0.2)) {
+    await new Promise((resolve) => setTimeout(resolve, 1500 + random() * 2500));
+  }
+  next();
+});
 const publicDir = fileURLToPath(new URL('../public', import.meta.url));
 app.use(express.static(publicDir));
 
@@ -100,5 +107,5 @@ app.delete('/api/bookings/:id', requireLogin, (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log(`Padel app listening on http://localhost:${port}`);
+  console.log(`Padel app listening on http://localhost:${port} (faults: ${profile}, seed: ${seed})`);
 });
