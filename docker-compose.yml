@@ -12,3 +12,14 @@ services:
       - GITEA__database__DB_TYPE=sqlite3
       - GITEA__server__ROOT_URL=http://localhost:3001/
       - GITEA__security__INSTALL_LOCK=true
+
+
+  padel:
+    build:
+      context: .
+      dockerfile: apps/padel/Dockerfile
+    ports:
+      - "3002:3002"
+    environment:
+      - PADEL_USER=${PADEL_USER}
+      - PADEL_PASSWORD=${PADEL_PASSWORD}

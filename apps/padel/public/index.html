@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Padel Club</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="top">
+    <span class="logo">Padel Club</span>
+    <div id="session" hidden>
+      <span id="who"></span>
+      <button type="button" id="sign-out" class="link">Sign out</button>
+    </div>
+  </header>
+
+  <main>
+    <section id="login-view" aria-labelledby="login-title">
+      <h1 id="login-title">Sign in</h1>
+      <form id="login-form">
+        <label>Username <input name="username" autocomplete="username" required></label>
+        <label>Password <input name="password" type="password" autocomplete="current-password" required></label>
+        <p id="login-error" class="error" role="alert" hidden></p>
+        <button type="submit">Sign in</button>
+      </form>
+    </section>
+
+    <section id="app-view" hidden>
+      <nav class="tabs" aria-label="Sections">
+        <button type="button" id="tab-book" aria-pressed="true">Book a court</button>
+        <button type="button" id="tab-mine" aria-pressed="false">My bookings</button>
+      </nav>
+
+      <p id="message" class="notice" role="status" hidden></p>
+
+      <section id="book-view" aria-labelledby="book-title">
+        <h1 id="book-title">Book a court</h1>
+        <label class="date">Date <input type="date" id="date"></label>
+        <p id="slots-state" class="muted" aria-live="polite"></p>
+        <div class="scroll">
+          <table id="slots" aria-label="Available slots"></table>
+        </div>
+      </section>
+
+      <section id="mine-view" aria-labelledby="mine-title" hidden>
+        <h1 id="mine-title">My bookings</h1>
+        <p id="mine-empty" class="muted" hidden>You have no bookings yet.</p>
+        <div class="scroll">
+          <table id="mine" aria-label="My bookings" hidden>
+            <thead><tr><th>Court</th><th>Date</th><th>Time</th><th>Duration</th><th>Players</th><th>Price</th><th></th></tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <dialog id="booking-dialog" aria-labelledby="dialog-title">
+    <form id="booking-form" method="dialog">
+      <h2 id="dialog-title"></h2>
+      <p id="dialog-when" class="muted"></p>
+      <label>Duration
+        <select name="duration">
+          <option value="60">60 minutes</option>
+          <option value="90">90 minutes</option>
+          <option value="120">120 minutes</option>
+        </select>
+      </label>
+      <label>Players
+        <select name="players">
+          <option value="2">2 players</option>
+          <option value="4" selected>4 players</option>
+        </select>
+      </label>
+      <p class="price">Price: <output id="price"></output></p>
+      <p id="dialog-error" class="error" role="alert" hidden></p>
+      <div class="actions">
+        <button type="button" id="dialog-close" class="secondary">Close</button>
+        <button type="submit">Confirm booking</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="app.js"></script>
+</body>
+</html>

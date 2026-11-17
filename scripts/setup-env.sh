@@ -5,7 +5,7 @@ source .env
 set +a
 
 echo "Starting containers..."
-docker compose up -d
+docker compose up -d --build
 
 echo "Waiting for Gitea..."
 until curl -sf http://localhost:3001/api/healthz > /dev/null; do sleep 2; done
@@ -18,5 +18,8 @@ docker compose exec -u git gitea gitea admin user create --admin \
 
 echo "Waiting for Juice Shop..."
 until curl -sf http://localhost:3000 > /dev/null; do sleep 2; done
+
+echo "Waiting for Padel app..."
+until curl -sf http://localhost:3002/health > /dev/null; do sleep 2; done
 
 echo "Environment is ready."
