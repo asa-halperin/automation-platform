@@ -37,8 +37,8 @@ jobs:
       - name: Copy reports out of the container
         if: ${{ !cancelled() }}
         run: |
-          docker cp tests:/app/products/${{ matrix.product }}/playwright-report products/${{ matrix.product }}/
-          docker cp tests:/app/products/${{ matrix.product }}/allure-results products/${{ matrix.product }}/
+          docker cp tests:/app/products/padel/playwright-report ./playwright-report
+          docker cp tests:/app/products/padel/allure-results ./allure-results
 
       - uses: actions/upload-artifact@v5
         if: ${{ !cancelled() }}
