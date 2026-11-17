@@ -33,6 +33,7 @@ export function createConfig(baseURL: string, options: ConfigOptions = {}) {
     reporter: [
       ['html', { open: 'never' }],
       ['allure-playwright', { resultsDir: 'allure-results' }],
+      ['json', { outputFile: 'results.json' }],
     ],
     use: {
       baseURL,
