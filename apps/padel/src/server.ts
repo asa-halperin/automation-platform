@@ -12,9 +12,17 @@ import { chance, profile, random, seed } from './faults.js';
 
 const app = express();
 app.use(express.json());
-app.use('/api', async (_req, _res, next) => {
-  if (profile === 'flaky' && chance(0.2)) {
+app.use('/api', async (req, res, next) => {
+  if (profile !== 'flaky') return next();
+
+  if (chance(0.2)) {
     await new Promise((resolve) => setTimeout(resolve, 1500 + random() * 2500));
+  }
+  if (chance(0.05)) {
+    return reject(res, 503, 'service temporarily unavailable');
+  }
+  if (req.method === 'POST' && req.path === '/bookings' && chance(0.15)) {
+    return reject(res, 409, 'slot is already booked');
   }
   next();
 });

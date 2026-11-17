@@ -23,3 +23,5 @@ services:
     environment:
       - PADEL_USER=${PADEL_USER}
       - PADEL_PASSWORD=${PADEL_PASSWORD}
+      - FAULT_PROFILE=${FAULT_PROFILE:-calm}
+      - FAULT_SEED=${FAULT_SEED:-42}
