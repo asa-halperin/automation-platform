@@ -8,7 +8,8 @@
     "test": "pnpm -r --no-bail --workspace-concurrency=1 test",
     "env:up": "bash scripts/setup-env.sh",
     "env:down": "docker compose down",
-    "report": "rm -rf allure-results && mkdir allure-results && cp products/*/allure-results/* allure-results/ && allure generate allure-results && allure open allure-report"
+    "report": "rm -rf allure-results && mkdir allure-results && cp products/*/allure-results/* allure-results/ && allure generate allure-results && allure open allure-report",
+    "typecheck": "pnpm -r --if-present typecheck"
   },
   "keywords": [],
   "author": "",
