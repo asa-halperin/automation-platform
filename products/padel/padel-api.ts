@@ -37,7 +37,16 @@ export class PadelApi {
 
   async cleanup(): Promise<void> {
     for (const id of this.created) {
-      await this.request.delete(`/api/bookings/${id}`, { headers: this.headers });
+      await this.cancelWithRetry(id);
     }
+  }
+
+  private async cancelWithRetry(id: string): Promise<void> {
+    for (let attempt = 1; attempt <= 3; attempt++) {
+      const response = await this.request.delete(`/api/bookings/${id}`, { headers: this.headers });
+      if (response.status() === 204 || response.status() === 404) return;
+      if (response.status() !== 503) break;
+    }
+    throw new Error(`Cleanup failed: booking ${id} is still in the system`);
   }
 }

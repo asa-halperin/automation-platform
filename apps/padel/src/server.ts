@@ -6,11 +6,26 @@ import {
 } from './data.js';
 import type { Booking } from './data.js';
 import { fileURLToPath } from 'node:url';
+import { chance, profile, random, seed } from './faults.js';
 
 
 
 const app = express();
 app.use(express.json());
+app.use('/api', async (req, res, next) => {
+  if (profile !== 'flaky') return next();
+
+  if (chance(0.2)) {
+    await new Promise((resolve) => setTimeout(resolve, 1500 + random() * 2500));
+  }
+  if (chance(0.05)) {
+    return reject(res, 503, 'service temporarily unavailable');
+  }
+  if (req.method === 'POST' && req.path === '/bookings' && chance(0.15)) {
+    return reject(res, 409, 'slot is already booked');
+  }
+  next();
+});
 const publicDir = fileURLToPath(new URL('../public', import.meta.url));
 app.use(express.static(publicDir));
 
@@ -100,5 +115,5 @@ app.delete('/api/bookings/:id', requireLogin, (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log(`Padel app listening on http://localhost:${port}`);
+  console.log(`Padel app listening on http://localhost:${port} (faults: ${profile}, seed: ${seed})`);
 });
