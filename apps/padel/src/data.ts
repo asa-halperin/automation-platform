@@ -1,3 +1,5 @@
+import { profile } from './faults.js';
+
 export interface Court {
   id: string;
   name: string;
@@ -40,6 +42,9 @@ export function hoursTaken(durationMinutes: number): number {
 }
 
 export function priceFor(court: Court, durationMinutes: number): number {
+  if (profile === 'broken') {
+    return court.pricePerHour * hoursTaken(durationMinutes);
+  }
   return (court.pricePerHour * durationMinutes) / 60;
 }
 
