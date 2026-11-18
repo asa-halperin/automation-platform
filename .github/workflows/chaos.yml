@@ -20,6 +20,9 @@ jobs:
       FAULT_PROFILE: ${{ matrix.profile }}
     steps:
       - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 26
 
       - run: cp .env.example .env
 
@@ -40,6 +43,13 @@ jobs:
           docker cp tests:/app/products/padel/playwright-report ./playwright-report
           docker cp tests:/app/products/padel/allure-results ./allure-results
 
+      - name: Summarize results
+        if: ${{ !cancelled() }}
+        run: |
+          docker cp tests:/app/products/padel/results.json ./results.json
+          node scripts/chaos-summary.ts results.json > summary-${{ matrix.profile }}.json
+          cat summary-${{ matrix.profile }}.json
+
       - uses: actions/upload-artifact@v5
         if: ${{ !cancelled() }}
         with:
@@ -51,3 +61,9 @@ jobs:
         with:
           name: chaos-${{ matrix.profile }}-allure-results
           path: allure-results
+
+      - uses: actions/upload-artifact@v5
+        if: ${{ !cancelled() }}
+        with:
+          name: summary-${{ matrix.profile }}
+          path: summary-${{ matrix.profile }}.json
