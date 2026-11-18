@@ -24,6 +24,7 @@
   "packageManager": "pnpm@12.16.1",
   "type": "module",
   "devDependencies": {
+    "@types/node": "catalog:",
     "allure": "^3.33.0"
   }
 }

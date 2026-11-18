@@ -20,6 +20,10 @@ jobs:
       FAULT_PROFILE: ${{ matrix.profile }}
     steps:
       - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 26
+          package-manager-cache: false
 
       - run: cp .env.example .env
 
@@ -40,6 +44,13 @@ jobs:
           docker cp tests:/app/products/padel/playwright-report ./playwright-report
           docker cp tests:/app/products/padel/allure-results ./allure-results
 
+      - name: Summarize results
+        if: ${{ !cancelled() }}
+        run: |
+          docker cp tests:/app/products/padel/results.json ./results.json
+          node scripts/chaos-summary.ts results.json > summary-${{ matrix.profile }}.json
+          cat summary-${{ matrix.profile }}.json
+
       - uses: actions/upload-artifact@v5
         if: ${{ !cancelled() }}
         with:
@@ -51,3 +62,47 @@ jobs:
         with:
           name: chaos-${{ matrix.profile }}-allure-results
           path: allure-results
+
+      - uses: actions/upload-artifact@v5
+        if: ${{ !cancelled() }}
+        with:
+          name: summary-${{ matrix.profile }}
+          path: summary-${{ matrix.profile }}.json
+
+  record:
+    needs: padel
+    if: ${{ !cancelled() }}
+    runs-on: ubuntu-latest
+    concurrency: chaos-record
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/checkout@v5
+        with:
+          ref: chaos-data
+          path: data
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 26
+          package-manager-cache: false
+
+      - uses: actions/download-artifact@v5
+        with:
+          pattern: summary-*
+          merge-multiple: true
+          path: summaries
+
+      - name: Add this run to the history
+        run: node scripts/chaos-history.ts data/history.json summaries
+
+      - name: Push the history
+        working-directory: data
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add history.json
+          git commit -m "Chaos run ${{ github.run_number }}"
+          git push
