@@ -1,6 +1,6 @@
 import { readFileSync } from 'node:fs';
 
-interface Attempt { status: string; error?: { message?: string } }status: string }
+interface Attempt { status: string; error?: { message?: string } }
 interface Test { status: string; results: Attempt[] }
 interface Spec { title: string; tests: Test[] }
 interface Suite { specs: Spec[]; suites?: Suite[] }
