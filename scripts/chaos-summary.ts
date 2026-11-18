@@ -1,6 +1,6 @@
 import { readFileSync } from 'node:fs';
 
-interface Attempt { status: string }
+interface Attempt { status: string; error?: { message?: string } }
 interface Test { status: string; results: Attempt[] }
 interface Spec { title: string; tests: Test[] }
 interface Suite { specs: Spec[]; suites?: Suite[] }
@@ -14,10 +14,17 @@ function collectSpecs(suite: Suite): Spec[] {
   return [...suite.specs, ...nested];
 }
 
-const summary = report.suites.flatMap(collectSpecs).map((spec) => ({
-  title: spec.title,
-  status: spec.tests[0].status,
-  attempts: spec.tests[0].results.length,
-}));
+const ANSI_COLORS = /\u001b\[[0-9;]*m/g;
+
+const summary = report.suites.flatMap(collectSpecs).map((spec) => {
+  const test = spec.tests[0];
+  const failedAttempt = test.results.find((attempt) => attempt.error);
+  return {
+    title: spec.title,
+    status: test.status,
+    attempts: test.results.length,
+    error: failedAttempt?.error?.message?.replace(ANSI_COLORS, '').split('\n').slice(0, 8).join('\n'),
+  };
+});
 
 console.log(JSON.stringify(summary, null, 2));
