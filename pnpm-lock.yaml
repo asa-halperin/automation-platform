@@ -181,6 +181,9 @@ importers:
       allure:
         specifier: ^3.33.0
         version: 3.33.0(debug@4.4.3)(preact@11.2.0)
+      typescript:
+        specifier: ^7.0.2
+        version: 7.0.2
 
   apps/padel:
     dependencies:
