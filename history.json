@@ -521,5 +521,80 @@
         }
       ]
     }
+  },
+  {
+    "number": 13,
+    "url": "https://github.com/asa-halperin/automation-platform/actions/runs/45379406875",
+    "date": "2026-11-24T10:57:25.325Z",
+    "profiles": {
+      "calm": [
+        {
+          "title": "a 90 minute booking on Center Court costs 240",
+          "status": "expected",
+          "attempts": 1
+        },
+        {
+          "title": "the same slot cannot be booked twice",
+          "status": "expected",
+          "attempts": 1
+        },
+        {
+          "title": "slots are listed for every court and opening hour",
+          "status": "expected",
+          "attempts": 1
+        },
+        {
+          "title": "slots request without a date is rejected",
+          "status": "expected",
+          "attempts": 1
+        }
+      ],
+      "flaky": [
+        {
+          "title": "a 90 minute booking on Center Court costs 240",
+          "status": "expected",
+          "attempts": 1
+        },
+        {
+          "title": "the same slot cannot be booked twice",
+          "status": "expected",
+          "attempts": 1
+        },
+        {
+          "title": "slots are listed for every court and opening hour",
+          "status": "expected",
+          "attempts": 1
+        },
+        {
+          "title": "slots request without a date is rejected",
+          "status": "flaky",
+          "attempts": 2,
+          "error": "Error: expect(received).toBe(expected) // Object.is equality\n\nExpected: 400\nReceived: 503"
+        }
+      ],
+      "broken": [
+        {
+          "title": "a 90 minute booking on Center Court costs 240",
+          "status": "unexpected",
+          "attempts": 3,
+          "error": "Error: expect(received).toBe(expected) // Object.is equality\n\nExpected: 240\nReceived: 320"
+        },
+        {
+          "title": "the same slot cannot be booked twice",
+          "status": "expected",
+          "attempts": 1
+        },
+        {
+          "title": "slots are listed for every court and opening hour",
+          "status": "expected",
+          "attempts": 1
+        },
+        {
+          "title": "slots request without a date is rejected",
+          "status": "expected",
+          "attempts": 1
+        }
+      ]
+    }
   }
 ]
